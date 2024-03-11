@@ -1,0 +1,30 @@
+﻿@page
+@model ClassDemoRazorWithDatabase.Pages.Drinks.IndexModel
+@{
+}
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+        <th>ID</th>
+        <th>Navn</th>
+        <th>Alkohol</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var d in Model.Drinks)
+    {
+        <tr>
+            <td>@d.Id</td>
+            <td>@d.Name</td>
+            <td>@d.Alc</td>
+        </tr>
+    }
+
+    </tbody>
+</table>
+
+<form>
+<input type="submit" class="btn btn-primary" value="Ny Drink" asp-page="Create" />
+</form>

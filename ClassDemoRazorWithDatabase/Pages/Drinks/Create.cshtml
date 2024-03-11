@@ -1,0 +1,31 @@
+﻿@page
+@model ClassDemoRazorWithDatabase.Pages.Drinks.CreateModel
+@{
+}
+
+<h1>Opret Drink</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <form method="post">
+                <label>ID</label><br />
+                <input type="number" asp-for="@Model.Id" /><br />
+                <br />
+
+                <label>Navn</label><br />
+                <input type="text" asp-for="@Model.Name" /><br />
+                <br />
+
+                <label>Alkohol</label><br />
+                <select asp-for="@Model.Alkohol" class="form-select">
+                    <option value="True">Ja</option>
+                    <option value="False">Nej</option>
+                </select>
+                <br />
+
+                <input type="submit" value="Opret" class="btn btn-outline-success" />
+            </form>
+        </div>
+    </div>
+</div>
