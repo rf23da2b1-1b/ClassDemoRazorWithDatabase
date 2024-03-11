@@ -5,9 +5,22 @@ namespace ClassDemoRazorWithDatabase.services
 {
     public class DrinkRepositoryDB : IDrinkRepo
     {
+
+        private const String insertSql = "insert into Drink values(@name,@alc)";
         public Drink Add(Drink newDrink)
         {
-            throw new NotImplementedException();
+            SqlConnection connection = new SqlConnection(Secret.ConnectionString);
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand(insertSql, connection);
+            cmd.Parameters.AddWithValue("@name", newDrink.Name);
+            cmd.Parameters.AddWithValue("@alc", newDrink.Alc);
+
+            int row = cmd.ExecuteNonQuery();
+            Console.WriteLine("Rows affected " + row);
+
+            connection.Close();
+            return newDrink;
         }
 
         public Drink Delete(int id)
