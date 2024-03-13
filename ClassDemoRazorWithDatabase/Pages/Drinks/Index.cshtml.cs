@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ClassDemoRazorWithDatabase.model;
+using static ClassDemoRazorWithDatabase.model.Drink;
 
 namespace ClassDemoRazorWithDatabase.Pages.Drinks
 {
@@ -20,5 +21,21 @@ namespace ClassDemoRazorWithDatabase.Pages.Drinks
         {
             Drinks = _repo.GetAll();
         }
+
+        public void OnPost()
+        {
+            Drinks = _repo.GetAll();
+
+            Drinks.Sort(new DrinkSortByIdReverse());
+;        }
+
+        public void OnPostSortName()
+        {
+            Drinks = _repo.GetAll();
+
+            Drinks.Sort();
+        }
     }
+
 }
+

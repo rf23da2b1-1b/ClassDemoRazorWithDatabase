@@ -3,7 +3,7 @@
     "http": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "Drinks/Create",
+      "launchUrl": "Drinks",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

@@ -25,6 +25,9 @@
     </tbody>
 </table>
 
-<form>
-<input type="submit" class="btn btn-primary" value="Ny Drink" asp-page="Create" />
+<form method="post">
+<input type="submit" class="btn btn-primary" value="Ny Drink" asp-page="Create" /><br/>
+<input type="submit" class="btn btn-success" value="Sorter" /> <br />
+<input type="submit" class="btn btn-success" value="Sorter Navn" asp-page-handler="SortName" /><br />
+
 </form>
