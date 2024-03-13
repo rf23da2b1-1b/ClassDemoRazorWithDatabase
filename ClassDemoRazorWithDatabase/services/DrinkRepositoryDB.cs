@@ -35,22 +35,7 @@ namespace ClassDemoRazorWithDatabase.services
 
         public List<Drink> GetAll()
         {
-            List<Drink> drinks = new List<Drink>();
-
-            SqlConnection connection = new SqlConnection(Secret.ConnectionString);
-            connection.Open();
-
-            SqlCommand cmd = new SqlCommand(selectAllSql, connection);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                Drink drink = ReadDrink(reader);
-                drinks.Add(drink);
-            }
-
-            connection.Close();
-            return drinks;
+            return GetAllWithParameterSQL(selectAllSql);
         }
 
         private Drink ReadDrink(SqlDataReader reader)
@@ -88,6 +73,33 @@ namespace ClassDemoRazorWithDatabase.services
 
             connection.Close();
             return drink;
+        }
+
+
+        private const String selectAllSqlSortedByName = "select * from Drink order by Name DESC";
+        public List<Drink> GetAllDrinksSortedByNameReversed()
+        {
+            return GetAllWithParameterSQL(selectAllSqlSortedByName);
+        }
+
+        private List<Drink> GetAllWithParameterSQL(string sql)
+        {
+            List<Drink> drinks = new List<Drink>();
+
+            SqlConnection connection = new SqlConnection(Secret.ConnectionString);
+            connection.Open();
+
+            SqlCommand cmd = new SqlCommand(sql, connection);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Drink drink = ReadDrink(reader);
+                drinks.Add(drink);
+            }
+
+            connection.Close();
+            return drinks;
         }
 
         /*
@@ -144,5 +156,7 @@ namespace ClassDemoRazorWithDatabase.services
 
             return drink;
         }
+
+        
     }
 }

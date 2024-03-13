@@ -35,6 +35,11 @@ namespace ClassDemoRazorWithDatabase.Pages.Drinks
 
             Drinks.Sort();
         }
+
+        public void OnPostSortNameDB()
+        {
+            Drinks = _repo.GetAllDrinksSortedByNameReversed();
+        }
     }
 
 }

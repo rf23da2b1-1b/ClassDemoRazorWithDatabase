@@ -67,5 +67,11 @@
 
             return updateThisDrink;
         }
+
+        public List<Drink> GetAllDrinksSortedByNameReversed()
+        {
+            // todo - lav metoden 
+            throw new NotImplementedException();
+        }
     }
 }

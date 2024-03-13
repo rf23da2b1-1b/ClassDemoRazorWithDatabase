@@ -9,5 +9,8 @@
         Drink Update(int id, Drink updatedDrink);
 
 
+
+        List<Drink> GetAllDrinksSortedByNameReversed();
+
     }
 }
